@@ -15,10 +15,12 @@ aws_instances = get_aws_instances()
 
 instance_types = rule {
   all aws_instances as _, instances {
-  all instances as index, r { all allowed_sizes as t {
-    r.applied.instance_type contains t
+    all instances as index, r { 
+      all allowed_sizes as t {
+        r.applied.instance_type contains t
+      }
+    } 
   }
- } 
 }
 
 main = rule {
